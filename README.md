@@ -197,4 +197,3 @@ Este projeto é open source para fins educacionais.
 ## 🙏 Agradecimentos
 
 - Dataset: [IMDB 50K Movie Reviews](https://www.kaggle.com/datasets/lakshmi25npathi/imdb-dataset-of-50k-movie-reviews)
-- Inspiração: CS50's Introduction to AI with Python
