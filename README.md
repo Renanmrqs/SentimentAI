@@ -2,6 +2,8 @@
 
 Modelo de Machine Learning para análise de sentimentos em reviews de filmes usando Processamento de Linguagem Natural.
 
+**🎬 [Demo ao Vivo](https://renanmrqs-sentimentai-app-j7ouwz.streamlit.app/)**
+
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)
@@ -167,8 +169,8 @@ Vetor → Regressão Logística → Sentimento + Confiança
 
 ## 🌐 Roadmap
 
-- [ ] Suporte a tradução multi-idioma (PT-BR)
-- [ ] Deploy no Streamlit Cloud
+- [✅] Suporte a tradução multi-idioma (PT-BR)
+- [✅] Deploy no Streamlit Cloud
 - [ ] Dashboard de visualização
 - [ ] Endpoint de API (FastAPI)
 
