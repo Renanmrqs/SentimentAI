@@ -2,8 +2,9 @@
 
 </div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3+-orange.svg)
+![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
+![Docker](https://img.shields.io/badge/Docker-enabled-blue?logo=docker)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-1.8+-orange.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)
 
 **🎬 [Demo ao Vivo](https://renanmrqs-sentimentai-app-j7ouwz.streamlit.app/) 🎬**
@@ -62,6 +63,7 @@ SentimentAI/
 │   └── utils.py
 ├── venv/                # Ambiente virtual (não versionado)
 ├── app.py               # Interface Streamlit
+├── Dockerfile
 ├── .gitignore
 ├── README.md
 └── requirements.txt
@@ -69,64 +71,45 @@ SentimentAI/
 
 ---
 
-## ⚙️ Instalação
+## ⚙️ Instalação e Funcionamento via Docker 🐳
 
-### Pré-requisitos
-- Python 3.8 ou superior
-- pip
 
 ### Passo a Passo
 
-**1. Clone o repositório:**
+**1. Construa a imagem:**
 ```bash
-git clone https://github.com/Renanmrqs/SentimentAI.git
-cd SentimentAI
+docker build -t sentimentai .
 ```
 
-**2. Crie um ambiente virtual:**
+**2. Rode o container:**
 ```bash
-python -m venv venv
-
-# Ativar (Windows)
-venv\Scripts\activate
-
-# Ativar (Linux/Mac)
-source venv/bin/activate
+docker run -p 8501:8501 sentimentai
 ```
 
-**3. Instale as dependências:**
-```bash
-pip install -r requirements.txt
-```
-
-**4. Baixe os dados do NLTK:**
-```bash
-python -c "import nltk; nltk.download('stopwords')"
-```
+**3. Acesse:**
+http://localhost:8501
 
 ---
 
-## 🎯 Como Usar
+### 🐍 Instalação Manual
 
-### Opção 1: Usar o modelo já treinado (recomendado)
-```bash
-streamlit run app.py
+## Caso deseje rodar o projeto diretamente no seu ambiente python
+
+**1. Clone o repositório e crie o venv:**
+```
+git clone https://github.com/Renanmrqs/SentimentAI.git
+cd SentimentAI
+python -m venv venv
 ```
 
-Acesse: `http://localhost:8501`
+**2. Instale as dependências e baixe os dados do NLTK:**
+```
+pip install -r requirements.txt
+python -c "import nltk; nltk.download('stopwords')"
+```
 
-### Opção 2: Treinar do zero
-```bash
-# 1. Explorar dados
-python src/exploration.py
-
-# 2. Pré-processar dataset
-python src/preprocessing.py
-
-# 3. Treinar modelo
-python src/training.py
-
-# 4. Rodar aplicação
+**3. Execute o App:**
+```
 streamlit run app.py
 ```
 
