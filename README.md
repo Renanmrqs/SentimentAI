@@ -158,8 +158,11 @@ Vetor → Regressão Logística → Sentimento + Confiança
 
 ## ⚙️ API
 
-**APIRest desenvolvida com FastAPI, veja como rodar:**
+**🔌 [Documentação da API (Swagger)](https://sentimentai-api.onrender.com/docs)**
 
+---
+
+**APIRest desenvolvida com FastAPI, veja como rodar:**
 
 **1. Inicie o servidor:**
 ```

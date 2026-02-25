@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from src.utils import cleaning_text, predict_sentiment
 from pydantic import BaseModel
 
+
 class Text(BaseModel):
     text: str
 
