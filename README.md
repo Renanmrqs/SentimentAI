@@ -6,6 +6,7 @@
 ![Docker](https://img.shields.io/badge/Docker-enabled-blue?logo=docker)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.8+-orange.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.32+-red.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-1.0+-blue.svg)
 
 **🎬 [Demo ao Vivo](https://renanmrqs-sentimentai-app-j7ouwz.streamlit.app/) 🎬**
 
@@ -42,6 +43,7 @@ Classifica reviews de filmes como **positivas** ou **negativas** com ~89% de acu
 - **NLTK** - Processamento de Linguagem Natural
 - **Pandas** - Manipulação de dados
 - **Streamlit** - Interface web
+- **FastAPI** - API REST para consumo de modelo
 
 ---
 
@@ -154,12 +156,35 @@ Vetor → Regressão Logística → Sentimento + Confiança
 
 ---
 
+## ⚙️ API
+
+**APIRest desenvolvida com FastAPI, veja como rodar:**
+
+
+**1. Inicie o servidor:**
+```
+uvicorn api:app --reload
+```
+**2. Acesse a documentação interativa (Swagger UI)**
+```
+http://localhost:8000/docs
+```
+**3. Exemplo de Requisição (CURL):**
+```
+curl -X 'POST' \
+  'http://localhost:8000/predict' \
+  -H 'Content-Type: application/json' \
+  -d '{"text": "This movie was absolutely amazing!"}'
+```
+
+---
+
 ## 🌐 Roadmap
 
 - [✅] Suporte a tradução multi-idioma (PT-BR)
 - [✅] Deploy no Streamlit Cloud
+- [✅] Endpoint de API (FastAPI)
 - [ ] Dashboard de visualização
-- [ ] Endpoint de API (FastAPI)
 
 ---
 

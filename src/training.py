@@ -3,40 +3,40 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
-from utils import predict_sentiment
+from src.utils import predict_sentiment
 import pickle
 
 df = pd.read_csv('data/IMDB_Cleaned.csv')
-print(f'review carregas: {len(df)}')
+print(f'review loaded: {len(df)}')
 
 x = df['review_cleaned']
 y = df['sentiment']
 print(x)
 print(y)
-print(f'tamanho x: {x.shape}')
-print(f'tamanho y: {y.shape}')
+print(f'size x: {x.shape}')
+print(f'size y: {y.shape}')
 
 
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-print(f'treino: {len(x_train)} reviws')
-print(f'test: {len(x_test)} reviws')
+print(f'training: {len(x_train)} reviews')
+print(f'test: {len(x_test)} reviews')
 vectorizer = TfidfVectorizer(max_features=5000)
 x_train_tfidf = vectorizer.fit_transform(x_train)
 x_test_tfidf = vectorizer.transform(x_test)
-print(f'vocabulario: {len(vectorizer.get_feature_names_out())} palavras')
+print(f'vocabulary: {len(vectorizer.get_feature_names_out())} words')
 
 
 model = LogisticRegression(max_iter=1000)
 model.fit(x_train_tfidf, y_train)
 
 
-print('testando modelo')
+print('testing model')
 y_pred = model.predict(x_test_tfidf)
 
 
 accuracy = accuracy_score(y_test, y_pred)
-print(f'acuracia: {accuracy*100:.2f}%')
+print(f'acuracy: {accuracy*100:.2f}%')
 print(classification_report(y_test, y_pred))
 
 
@@ -53,8 +53,8 @@ exemple = [
 
 for text in exemple:
     sentiment, trust = predict_sentiment(text)
-    print(f'n/texto: {text}')
-    print(f'predição: {sentiment.upper()} ({trust*100:.1f}% confiança)')
+    print(f'n/text: {text}')
+    print(f'predict: {sentiment.upper()} ({trust*100:.1f}% confiance)')
     
 
 
