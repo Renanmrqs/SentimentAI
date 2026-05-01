@@ -22,6 +22,7 @@ print(f'\nProcessando {len(df_balanced)} reviws...')
 
 df_balanced['comments_cleaned'] = df_balanced['comment_text'].apply(cleaning_text)
 
+# analise dos dados limpos
 for i in range(3):
     print(f'\n--- comments {i+1} ---')
     print(f'normal {len(df.iloc[i]['comment_text'].split())} palavras):')
