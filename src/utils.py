@@ -35,3 +35,22 @@ def predict_sentiment(text):
     
     return prediction, max(trust)
 
+
+
+
+with open('models/toxic_model.pkl', 'rb') as f:
+    toxic_model = pickle.load(f)
+
+with open('models/toxic_vectorizer.pkl', 'rb') as f:
+    toxic_vectorizer = pickle.load(f)
+
+def predict_comments(text):
+    from nltk.corpus import stopwords
+    
+    text_cleaned = cleaning_text(text)
+    
+    text_tfidf = toxic_vectorizer.transform([text_cleaned])
+    prediction = toxic_model.predict(text_tfidf)[0]
+    trust = toxic_model.predict_proba(text_tfidf)[0]
+    
+    return prediction, max(trust)
