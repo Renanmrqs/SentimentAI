@@ -2,12 +2,19 @@ from fastapi import FastAPI
 from src.utils import cleaning_text, predict_sentiment,predict_comments
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-
+from deep_translator import GoogleTranslator
+from langdetect import detect
 
 class Text(BaseModel):
     text: str
 
-
+def translator(text):
+    if detect(text) != 'en':
+        translator = GoogleTranslator(source='auto', target='en')
+        text_translated = translator.translate(text)
+        return text_translated 
+    else:
+        return text
 
 
 app = FastAPI()
@@ -28,7 +35,9 @@ def input_user(item: Text):
 
 @app.post("/toxic_predict")
 def input_toxic_comment(item: Text): 
-    result, trust = predict_comments(item.text)
+    text_translated = translator(item.text)
+    result, trust = predict_comments(text_translated)
+    
     if result == 1:
         result = "toxic" 
     else:
